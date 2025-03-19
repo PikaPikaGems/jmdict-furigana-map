@@ -18,6 +18,10 @@ Input file:
 Download the latest `JmdictFurigana.json` from the [JmdictFurigana project][jmdictfurigana]
 and save it in the `input` directory.
 
+```bash
+curl --output-dir input -OL https://github.com/Doublevil/JmdictFurigana/releases/latest/download/JmdictFurigana.json
+```
+
 ### Running the program
 
 In your terminal, run:
@@ -26,7 +30,8 @@ In your terminal, run:
 ./src/main.py
 ```
 
-A new `jmdict-furigana-map.json` should be generated in the `output` directory.
+A new `jmdict-furigana-map.json` should be generated in the `output` directory, and its
+compressed archive file in the `releases` directory.
 
 ## License
 
