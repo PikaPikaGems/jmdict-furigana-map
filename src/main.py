@@ -2,6 +2,7 @@
 
 import json
 import tarfile
+import os
 
 furigana_dict = {}
 
@@ -24,8 +25,14 @@ with open("./input/JmdictFurigana.json", encoding="utf-8-sig") as json_file:
     for item in furigana_list:
         add_word(item["text"], item["reading"], item["furigana"])
 
-output_file = "./output/jmdict-furigana-map.json"
-with open(output_file, mode="w", encoding="utf-8") as json_file:
+output_file = "jmdict-furigana-map.json"
+output_dir = "output"
+output_path = os.path.join(output_dir, output_file)
+with open(output_path, mode="w", encoding="utf-8") as json_file:
     json.dump(furigana_dict, json_file, ensure_ascii=False)
-with tarfile.open("./releases/jmdict-furigana-map.json.tar.gz", mode="w:gz") as tar:
-    tar.add(output_file)
+
+release_file = f"{output_file}.tar.gz"
+release_dir = "releases"
+release_path = os.path.join(release_dir, release_file)
+with tarfile.open(release_path, mode="w:gz") as tar:
+    tar.add(output_path, arcname=output_file)
